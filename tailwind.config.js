@@ -10,6 +10,7 @@ module.exports = {
       'secondary':'#F6AF35',
       'black':'#000',
       'white':'#fff',
+      bgtransparent:"rgba(0,0,0,0.2)",
       'background':'#cbd5e1'
   },
   },

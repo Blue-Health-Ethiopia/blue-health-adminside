@@ -4,7 +4,7 @@ import { DashboardIcon } from '../../assets/Icons';
 import Button from './Button';
 const SidePanel = () => {
   return (
-    <div className="fixed h-screen flex items-center justify-center bg-primary w-1/6">
+    <side className="fixed h-screen flex items-center justify-center bg-primary w-1/6">
       <div className="h-full w-full p-3 flex flex-col items-center gap-16">
         <img className="w-44 mt-14" src={logo_1} alt="" />
         <div className="w-full h-0.5 bg-primaryMedium" />
@@ -15,7 +15,7 @@ const SidePanel = () => {
           />
         </div>
       </div>
-    </div>
+    </side>
   );
 };
 

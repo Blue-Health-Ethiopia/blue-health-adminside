@@ -12,6 +12,7 @@ module.exports = {
         black: '#212427',
         bgtransparent: 'rgba(0,0,0,0.2)',
         background: '#E6F1F6',
+        backgroundDim: '#D5E5ED',
       },
     },
   },

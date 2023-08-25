@@ -1,9 +1,13 @@
+import Navbar from "./components/common/Navbar";
 import SidePanel from "./components/common/SidePanel";
+import Container from "./container/Container";
 
 function App() {
   return (
     <>
-    <SidePanel/>
+      <SidePanel />
+      <Navbar/>
+      <Container/>
     </>
     // <div className="font-light flex-col text-black text-xl gap-5 text-center h-screen flex justify-center items-center overflow-hidden">
     //   <Loading />

@@ -1,28 +1,13 @@
-import {
-  BrowserRouter,
-  Routes, // instead of "Switch"
-  Route,
-} from 'react-router-dom';
-import Login from './Component/Loginpage/login';
-import Nav from './Component/Navbar/Nav';
-import Register from './Component/Register/Register';
-import Dashboard from './Component/Dashboard/Dashboard';
-import NewsFeed from './Component/NewsFeed/NewsFeed';
-import SummerRegister from './Component/Register/SummerRegister';
+import Loading from "./components/states/Loading";
 
 function App() {
   return (
-    <div className="bg-background overflow-hidden">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/dash" element={<Nav />}>
-            <Route index element={<Dashboard />} />
-            <Route path="register" element={<SummerRegister/>} />
-            <Route path="newsfeed" element={<NewsFeed />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+    <div className="font-light flex-col text-black text-xl gap-5 text-center h-screen flex justify-center items-center overflow-hidden">
+      <Loading />
+      <h1>
+        BLUE HEALTH <span className="font-semibold text-primaryMedium">ADMIN PANEL</span>
+      </h1>
+      <h2>Coming Soon</h2>
     </div>
   );
 }

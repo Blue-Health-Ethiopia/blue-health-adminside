@@ -1,4 +1,3 @@
-import {MdAdminPanelSettings} from 'react-icons/md'
+import { MdDashboardCustomize } from 'react-icons/md';
 
-
-export const Admin=MdAdminPanelSettings
+export const DashboardIcon = MdDashboardCustomize;

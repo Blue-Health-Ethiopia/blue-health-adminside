@@ -4,7 +4,6 @@ import circleLogo from '../../assets/Logos/Logo Circle.png';
 
 const Loading = () => {
     return (
-
         <div class="lds-default flex items-center justify-center">
           <div></div>
           <div></div>

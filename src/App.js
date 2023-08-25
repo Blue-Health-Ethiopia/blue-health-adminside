@@ -7,7 +7,7 @@ function App() {
       <h1>
         BLUE HEALTH <span className="font-semibold text-primaryMedium">ADMIN PANEL</span>
       </h1>
-      <h2>Coming Soon</h2>
+      <h2>Coming Soon...</h2>
     </div>
   );
 }

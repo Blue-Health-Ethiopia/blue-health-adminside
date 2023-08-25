@@ -1,21 +1,21 @@
-import Navbar from "./components/common/Navbar";
-import SidePanel from "./components/common/SidePanel";
-import Container from "./container/Container";
+import Navbar from './components/common/Navbar';
+import SidePanel from './components/common/SidePanel';
+import { Route, Routes } from 'react-router-dom';
+import Settings from './pages/Settings';
+import Dashboard from './pages/Dashboard';
 
 function App() {
   return (
     <>
       <SidePanel />
-      <Navbar/>
-      <Container/>
+      <Navbar />
+      <div className="absolute right-[5%] left-[20%] top-[22%]">
+        <Routes>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/settings" element={<Settings />} />
+        </Routes>
+      </div>
     </>
-    // <div className="font-light flex-col text-black text-xl gap-5 text-center h-screen flex justify-center items-center overflow-hidden">
-    //   <Loading />
-    //   <h1>
-    //     BLUE HEALTH <span className="font-semibold text-primaryMedium">ADMIN PANEL</span>
-    //   </h1>
-    //   <h2>Coming Soon...</h2>
-    // </div>
   );
 }
 

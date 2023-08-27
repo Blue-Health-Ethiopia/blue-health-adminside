@@ -27,17 +27,17 @@ const SidePanel = () => {
         isExpanded ? 'w-1/6' : 'w-20'
       } bg-primary transition-all duration-300`}
     >
-      <div className="h-full w-full p-3 flex flex-col items-center gap-16">
+      <div className="h-full w-full p-3 flex flex-col items-center gap-8">
         <div className="flex items-center justify-center">
           <MenuButton isExpanded={isExpanded} togglePanel={togglePanel} />
         </div>
-        {/* <img
-          className={`w-44  transition-all duration-300 ${
-            isExpanded ? 'h-auto' : 'h-12'
-          }`}
-          src={isExpanded ? logo_1 : logo_2}
-          alt=""
-        /> */}
+        <div className=" gap-4">
+          <img
+            className={`w-14 transition-all duration-200 `}
+            src={logo_2}
+            alt=""
+          />
+        </div>
         <div className="w-full h-0.5 bg-primaryMedium" />
         <div className="flex w-full flex-col justify-between h-full">
           <div className="flex flex-col gap-5">

@@ -1,10 +1,10 @@
 import React from 'react';
 import admin from '../../assets/Admin.png';
 
-const Navbar = ({activeRoute}) => {
+const Navbar = ({ activeRoute, isExpanded }) => {
   return (
     <div className="relative -z-30 w-full h-52 bg-backgroundDim">
-      <nav class="absolute right-[5%] left-[20%] top-[20%]">
+      <nav class={`absolute right-[5%] ${isExpanded?'left-[21%]':'left-[9%]'} top-[20%] duration-200`}>
         <div className="flex flex-col w-full justify-start h-full gap-8">
           <h1 className="font-light tracking-[0.2rem] text-sm text-black">
             ADMIN PANEL

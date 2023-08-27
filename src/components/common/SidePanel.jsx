@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import logo_1 from '../../assets/Logos/Blue Health Logo 1.png';
 import logo_2 from '../../assets/Logos/LogoOnly.png';
 import {
@@ -9,13 +9,16 @@ import {
 import Button from './Button';
 import { Link, useLocation } from 'react-router-dom';
 import MenuButton from '../features/MenuButton';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleSidePanel } from '../../redux/actions';
 
 const SidePanel = () => {
   const location = useLocation();
-  const [isExpanded, setIsExpanded] = useState(true);
+  const isExpanded = useSelector(state => state.panel.isExpanded)
+  const dispatch=useDispatch()
 
   const togglePanel = () => {
-    setIsExpanded(!isExpanded);
+    dispatch(toggleSidePanel())
   };
 
   return (

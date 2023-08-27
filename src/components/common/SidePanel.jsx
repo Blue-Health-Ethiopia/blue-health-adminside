@@ -33,8 +33,10 @@ const SidePanel = () => {
         </div>
         <div className=" gap-4">
           <img
-            className={`w-14 transition-all duration-200 `}
-            src={logo_2}
+            className={`w-44 transition-all duration-200 ${
+            isExpanded ? 'h-auto' : 'h-12'
+          }`}
+            src={isExpanded?logo_1:logo_2}
             alt=""
           />
         </div>

@@ -1,11 +1,11 @@
 import React from 'react';
 
-function Button({ placeholder, icon }) {
+function Button({ placeholder, icon,activeRoute }) {
   return (
     <div>
-      <button className="bg-primaryMedium text-end hover:bg-primaryDark duration-150 rounded-lg p-3 text-white font-extralight capitalize tracking-[0.3rem] text-xs w-full">
+      <button className={` text-end hover:bg-primaryLight ${activeRoute?'bg-primaryMedium':'bg-primaryDark'} duration-150 rounded-lg p-3 text-white font-extralight capitalize tracking-[0.3rem] text-xs w-full`}>
         <div className="flex items-center w-full justify-between">
-          {icon}
+         <div className={`${activeRoute?'opacity-100':'opacity-40'}`}> {icon}</div>
           {placeholder}
         </div>
       </button>

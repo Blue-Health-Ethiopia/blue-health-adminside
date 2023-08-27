@@ -11,7 +11,7 @@ function App() {
       <Navbar />
       <div className="absolute right-[5%] left-[20%] top-[22%]">
         <Routes>
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/" element={<Dashboard />} />
           <Route path="/settings" element={<Settings />} />
         </Routes>
       </div>

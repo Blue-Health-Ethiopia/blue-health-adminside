@@ -1,43 +1,70 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo_1 from '../../assets/Logos/Blue Health Logo 1.png';
-import { DashboardIcon, LapTopIcon, LogoutIcon } from '../../assets/Icons/Icons';
+import logo_2 from '../../assets/Logos/LogoOnly.png';
+import {
+  DashboardIcon,
+  LapTopIcon,
+  LogoutIcon,
+} from '../../assets/Icons/Icons';
 import Button from './Button';
 import { Link, useLocation } from 'react-router-dom';
+import MenuButton from '../features/MenuButton';
 
 const SidePanel = () => {
   const location = useLocation();
+  const [isExpanded, setIsExpanded] = useState(true);
+
+  const togglePanel = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   return (
-    <side className="fixed h-screen flex items-center justify-center bg-primary w-1/6">
+    <aside
+      className={`fixed h-screen ${
+        isExpanded ? 'w-1/6' : 'w-20'
+      } bg-primary transition-all duration-300`}
+    >
       <div className="h-full w-full p-3 flex flex-col items-center gap-16">
-        <img className="w-44 mt-14" src={logo_1} alt="" />
+        <div className="flex items-center justify-center">
+          <MenuButton isExpanded={isExpanded} togglePanel={togglePanel} />
+        </div>
+        {/* <img
+          className={`w-44  transition-all duration-300 ${
+            isExpanded ? 'h-auto' : 'h-12'
+          }`}
+          src={isExpanded ? logo_1 : logo_2}
+          alt=""
+        /> */}
         <div className="w-full h-0.5 bg-primaryMedium" />
         <div className="flex w-full flex-col justify-between h-full">
           <div className="flex flex-col gap-5">
-            {' '}
             <Link to={'/'}>
               <Button
-                placeholder={'DASHBOARD'}
                 icon={<DashboardIcon className="w-7 h-7" />}
                 activeRoute={location.pathname === '/'}
+                placeholder={isExpanded ? 'DASHBOARD' : null}
+                isExpanded={isExpanded}
               />
             </Link>
-            <Link to={'/settings'}>
+            <Link to={'/virtualseminar'}>
               <Button
-                placeholder={'VIRTUAL \n SEMINARY'}
                 icon={<LapTopIcon className="w-7 h-7" />}
-                activeRoute={location.pathname === '/settings'}
+                activeRoute={location.pathname === '/virtualseminar'}
+                placeholder={isExpanded ? 'VIRTUAL \n SEMINARY' : null}
+                isExpanded={isExpanded}
               />
             </Link>
           </div>
           <Link to={'#'}>
             <Button
-              placeholder={'LOGOUT'}
               icon={<LogoutIcon className="w-7 h-7" />}
+              placeholder={isExpanded ? 'LOGOUT' : null}
+              isExpanded={isExpanded}
             />
           </Link>
         </div>
       </div>
-    </side>
+    </aside>
   );
 };
 

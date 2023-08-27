@@ -1,7 +1,7 @@
 import React from 'react';
 import admin from '../../assets/Admin.png';
 
-const Navbar = () => {
+const Navbar = ({activeRoute}) => {
   return (
     <div className="relative -z-30 w-full h-52 bg-backgroundDim">
       <nav class="absolute right-[5%] left-[20%] top-[20%]">
@@ -10,7 +10,11 @@ const Navbar = () => {
             ADMIN PANEL
           </h1>
           <div className="flex items-center justify-between">
-            <h1 className="font-bold text-xl tracking-[0.3rem]">DASHBOARD</h1>
+            <h1 className="font-bold text-xl tracking-[0.3rem]">
+              {activeRoute === '/'
+                ? 'DASHBOARD'
+                : activeRoute === '/virtualseminar' && 'VIRTUAL SEMINARIES'}
+            </h1>
             <div className="flex items-center justify-center text-end gap-3">
               <div>
                 <h1 className="text-sm font-semibold text-black tracking-[0.2rem]">

@@ -5,7 +5,7 @@ const MenuButton = ({togglePanel,isExpanded}) => {
     <div>
       <button className="relative group" onClick={togglePanel}>
         <div
-          className={`relative flex border-4 border-backgroundDim overflow-hidden items-center justify-center rounded-full w-[45px] h-[45px] transform transition-all bg-accent ring-0 ring-gray-300 hover:ring-8 group-focus:ring-4 ring-opacity-30 duration-200 shadow-md ${
+          className={`relative flex border-4 border-backgroundDim overflow-hidden items-center justify-center rounded-full w-[45px] h-[45px] transform transition-all bg-accent  duration-200 ${
             isExpanded ? 'translate-x-32' : 'translate-x-[42px] rotate-180'
           }`}
         >

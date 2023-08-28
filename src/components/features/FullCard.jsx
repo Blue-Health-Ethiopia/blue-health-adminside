@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from '../common/Button';
+import { Link } from 'react-router-dom';
 
 const FullCard = () => {
   return (
@@ -7,11 +8,13 @@ const FullCard = () => {
       <h1 className="font-bold text-2xl mb-2 text-black capitalize">
         Host your virtual event
       </h1>
-      <div className='flex w-full justify-between items-end'>
+      <div className="flex w-full justify-between items-end">
         <p className="w-1/4 capitalize text-black text-lg font-light">
           set up your online seminar in a few steps
         </p>
-        <Button placeholder={'CREATE VIRTUAL SEMINAR'}/>
+        <Link to={'/virtualseminar/create'}>
+          <Button placeholder={'CREATE VIRTUAL SEMINAR'} />
+        </Link>
       </div>
     </div>
   );

@@ -1,19 +1,30 @@
 import React from 'react';
 import admin from '../../assets/Admin.png';
+import { CopyButton } from './Button';
+import { UploadIcon } from '../../assets/Icons/Icons';
 
 const Navbar = ({ activeRoute, isExpanded }) => {
   return (
-    <div className="relative -z-30 w-full h-52 bg-backgroundDim">
-      <nav class={`absolute right-[5%] ${isExpanded?'left-[21%]':'left-[9%]'} top-[20%] duration-200`}>
+    <div className="relative w-full h-52 bg-backgroundDim">
+      <nav
+        class={`absolute right-[5%] ${
+          isExpanded ? 'left-[21%]' : 'left-[9%]'
+        } top-[14%] duration-200`}
+      >
         <div className="flex flex-col w-full justify-start h-full gap-8">
-          <h1 className="font-light tracking-[0.2rem] text-sm text-black">
-            ADMIN PANEL
-          </h1>
+          <div className='flex w-full justify-between'>
+            <h1 className="font-light tracking-[0.2rem] text-sm text-black">
+              ADMIN PANEL
+            </h1>
+            <CopyButton placeholder={'Upload Excel'} icon={<UploadIcon className='w-5 h-5'/>}/>
+          </div>
           <div className="flex items-center justify-between">
             <h1 className="font-bold text-xl tracking-[0.3rem]">
               {activeRoute === '/'
                 ? 'DASHBOARD'
-                : activeRoute === '/virtualseminar' && 'VIRTUAL SEMINARIES'}
+                : activeRoute === '/virtualseminar'
+                ? 'VIRTUAL SEMINARIES'
+                : 'CREATE VIRTUAL SEMINAR'}
             </h1>
             <div className="flex items-center justify-center text-end gap-3">
               <div>

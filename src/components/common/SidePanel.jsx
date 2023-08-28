@@ -25,7 +25,7 @@ const SidePanel = () => {
     <aside
       className={`fixed h-screen ${
         isExpanded ? 'w-1/6' : 'w-20'
-      } bg-primary transition-all duration-300`}
+      } bg-primary transition-all duration-300 z-50`}
     >
       <div className="h-full w-full p-3 flex flex-col items-center gap-8">
         <div className="flex items-center justify-center">
@@ -34,9 +34,9 @@ const SidePanel = () => {
         <div className=" gap-4">
           <img
             className={`w-44 transition-all duration-200 ${
-            isExpanded ? 'h-auto' : 'h-12'
-          }`}
-            src={isExpanded?logo_1:logo_2}
+              isExpanded ? 'h-auto' : 'h-14'
+            }`}
+            src={isExpanded ? logo_1 : logo_2}
             alt=""
           />
         </div>

@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom';
 const LinkNav = () => {
   const links = [
     {
+      id:1,
       link: '/virtualseminar',
       name: 'Virtual Seminary',
     },
     {
+      id:2,
       link: '/virtualseminar/create',
       name: 'Create virtual seminar',
     },
@@ -18,6 +20,7 @@ const LinkNav = () => {
         {links.map((link) => (
           <>
             <Link
+              key={link.id}
               className="text-primaryMedium text-sm hover:text-primary"
               to={link.link}
             >

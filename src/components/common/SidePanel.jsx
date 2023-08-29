@@ -45,7 +45,7 @@ const SidePanel = () => {
           <div className="flex flex-col gap-5">
             <Link to={'/'}>
               <Button
-                icon={<DashboardIcon className="w-7 h-7" />}
+                icon={<DashboardIcon className="w-6 h-6" />}
                 activeRoute={location.pathname === '/'}
                 placeholder={isExpanded ? 'DASHBOARD' : null}
                 isExpanded={isExpanded}
@@ -53,7 +53,7 @@ const SidePanel = () => {
             </Link>
             <Link to={'/virtualseminar'}>
               <Button
-                icon={<LapTopIcon className="w-7 h-7" />}
+                icon={<LapTopIcon className="w-6 h-6" />}
                 activeRoute={location.pathname === '/virtualseminar'}
                 placeholder={isExpanded ? 'VIRTUAL \n SEMINARY' : null}
                 isExpanded={isExpanded}
@@ -62,7 +62,7 @@ const SidePanel = () => {
           </div>
           <Link to={'#'}>
             <Button
-              icon={<LogoutIcon className="w-7 h-7" />}
+              icon={<LogoutIcon className="w-6 h-6" />}
               placeholder={isExpanded ? 'LOGOUT' : null}
               isExpanded={isExpanded}
             />

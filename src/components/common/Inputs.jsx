@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
-import { CorrectIcon } from '../../assets/Icons/Icons';
+import { CorrectIcon, EditIcon } from '../../assets/Icons/Icons';
+import { MdSave } from 'react-icons/md';
 
-export const TextInput = ({placeholder,icon}) => {
+export const TextInput = ({placeholder,icon,onChange}) => {
   return (
-    <div className="bg-white  flex items-center gap-2 w-2/3 p-3 rounded-md font-light focus ring-primaryMedium ring-1 ring-opacity-10">
+    <div className="bg-white  flex items-center gap-2 w-2/3 p-3 rounded-md font-light focus ring-primaryMedium ring-1 ring-opacity-30">
       <div className="text-primaryMedium">{icon}</div>
       <input
         className="outline-none tracking-wider py-1 ml-2 w-full"
         type="text"
         placeholder={placeholder}
+        onChange={onChange}
       />
     </div>
   );
 };
 
-export  const HighlightInput = ({icon,placeholder}) => {
+export  const HighlightInput = ({icon,placeholder,highlightedWords,setHighlightedWords}) => {
   const [inputValue, setInputValue] = useState('');
-  const [highlightedWords, setHighlightedWords] = useState([]);
-
   const handleInputChange = (event) => {
     setInputValue(event.target.value);
   };
@@ -37,7 +37,6 @@ export  const HighlightInput = ({icon,placeholder}) => {
       setHighlightedWords(updatedWords);
     };
 
-
   return (
     <div className="flex flex-col items-start gap-3 duration-200">
       <h1 className="text-xs ml-1 font-bold capitalize text-primaryMedium">
@@ -49,7 +48,7 @@ export  const HighlightInput = ({icon,placeholder}) => {
           ? 'add 1 more occupations'
           : <span className='flex items-center gap-2'><h1>you're all set</h1><CorrectIcon/></span>}
       </h1>
-      <div className="bg-white flex items-center gap-2 w-fit p-3 rounded-md font-light focus ring-primaryMedium ring-1 ring-opacity-10">
+      <div className="bg-white flex items-center gap-2 w-fit p-3 rounded-md font-light focus ring-primaryMedium ring-1 ring-opacity-30">
         <div className="text-primaryMedium">{icon}</div>{' '}
         {highlightedWords.length < 3 && (
           <>
@@ -87,16 +86,74 @@ export  const HighlightInput = ({icon,placeholder}) => {
   );
 };
 
-export const CEUInput = ({ placeholder, icon }) => {
-  return (
-    <div className="bg-white  flex items-center gap-2 w-fit p-3 rounded-md font-light focus ring-primaryMedium ring-1 ring-opacity-10">
+export const CEUInput = ({ placeholder, icon,onChange }) => {
+ return (
+    <div className="bg-white  flex items-center gap-2 w-2/3 p-3 rounded-md font-light focus ring-primaryMedium ring-1 ring-opacity-30">
       <div className="text-primaryMedium">{icon}</div>
       <input
-        className="outline-none tracking-wider py-1 ml-2 w-fit"
-        type="number"
-        step="any" // Allows both integers and floating-point numbers
+        className="outline-none tracking-wider py-1 ml-2 w-full"
+        type="text"
         placeholder={placeholder}
+        onChange={onChange}
       />
+    </div>
+  );
+};
+
+
+
+export const EditableInput = ({
+  placeholder,
+  icon,
+  isEditing = true,
+  text,
+  toggleEdit,
+}) => {
+  return isEditing ? (
+    <div
+      className={`flex items-center justify-between gap-2 w-2/3 p-1 h-full px-3 rounded-md font-light  ${
+        isEditing ? '  border-b border-accent' : 'ring-0 '
+      }`}
+    >
+      <div
+        className={`${
+          isEditing ? 'text-accent animate-pulse' : 'text-primaryMedium'
+        }`}
+      >
+        {icon}
+      </div>
+      {isEditing ? (
+        <input
+          className="outline-none bg-transparent tracking-wider py-1 ml-2 w-full"
+          type="text"
+          value={text}
+          onChange={null}
+        />
+      ) : (
+        <span>{text}</span>
+      )}{' '}
+      <button onClick={toggleEdit}>
+        <MdSave className="text-accent" />
+      </button>
+    </div>
+  ) : (
+    <div
+      className={`flex items-center justify-between font-bold text-primary tracking-widest gap-2 w-2/3 p-1 h-full px-3 rounded-md  ${
+        isEditing ? 'border-b border-accent' : 'ring-0 '
+      }`}
+    >
+      {' '}
+      <div
+        className={`${
+          isEditing ? 'text-accent animate-pulse' : 'text-primaryMedium'
+        } flex items-center gap-3`}
+      >
+        {icon}
+        <span>{text}</span>
+      </div>
+      <button onClick={toggleEdit}>
+        <EditIcon className="text-primaryMedium" />
+      </button>
     </div>
   );
 };

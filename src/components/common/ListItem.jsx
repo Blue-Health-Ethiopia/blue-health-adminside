@@ -1,11 +1,12 @@
 import React from 'react';
 import { ActiveIcon, LinkIcon, PeopleIcon } from '../../assets/Icons/Icons';
 import { CopyButton } from './Button';
+import { Link } from 'react-router-dom';
 
-const ListItem = ({ title, activaState, people, date, image }) => {
+const ListItem = ({ title, activaState, people, date, image,id }) => {
 
   return (
-    <div className="w-full cursor-pointer hover:bg-backgroundDim duration-200 flex overflow-hidden bg-white h-36 rounded-md shadow-lg shadow-slate-200">
+    <Link to={`/virtualseminar/${id}`} className="w-full cursor-pointer hover:bg-backgroundDim duration-200 flex overflow-hidden bg-white h-36 rounded-md shadow-lg shadow-slate-200">
       <img className="object-cover w-1/6 overflow-hidden" src={image} alt="" />
       <div className="p-2 pl-8 space-y-3 w-full">
         <h1 className="font-bold capitalize text-lg tracking-widest">
@@ -33,7 +34,7 @@ const ListItem = ({ title, activaState, people, date, image }) => {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

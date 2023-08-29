@@ -5,6 +5,7 @@ import Dashboard from './pages/Dashboard';
 import { useSelector } from 'react-redux';
 import VirtualSeminar from './pages/VirtualSeminar';
 import CreateSeminar from './pages/CreateSeminar';
+import SeminarDetail from './pages/SeminarDetail';
 
 function App() {
   const location = useLocation();
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/virtualseminar" element={<VirtualSeminar />} />
           <Route path="/virtualseminar/create" element={<CreateSeminar />} />
+          <Route path="/virtualseminar/:seminarID" element={<SeminarDetail />} />
         </Routes>
       </div>
     </>

@@ -7,16 +7,19 @@ const Navbar = ({ activeRoute, isExpanded }) => {
   return (
     <div className="relative w-full h-52 bg-backgroundDim">
       <nav
-        class={`absolute right-[5%] ${
+        className={`absolute right-[5%] ${
           isExpanded ? 'left-[21%]' : 'left-[9%]'
-        } top-[14%] duration-200`}
+        } top-[12%] duration-200`}
       >
         <div className="flex flex-col w-full justify-start h-full gap-8">
-          <div className='flex w-full justify-between'>
+          <div className="flex w-full justify-between">
             <h1 className="font-light tracking-[0.2rem] text-sm text-black">
               ADMIN PANEL
             </h1>
-            <CopyButton placeholder={'Upload Excel'} icon={<UploadIcon className='w-5 h-5'/>}/>
+            <CopyButton
+              placeholder={'Upload Excel'}
+              icon={<UploadIcon className="w-5 h-5" />}
+            />
           </div>
           <div className="flex items-center justify-between">
             <h1 className="font-bold text-xl tracking-[0.3rem]">
@@ -24,7 +27,9 @@ const Navbar = ({ activeRoute, isExpanded }) => {
                 ? 'DASHBOARD'
                 : activeRoute === '/virtualseminar'
                 ? 'VIRTUAL SEMINARIES'
-                : 'CREATE VIRTUAL SEMINAR'}
+                : activeRoute === `/virtualseminar/create`
+                ? 'CREATE VIRTUAL SEMINAR'
+                : ''}
             </h1>
             <div className="flex items-center justify-center text-end gap-3">
               <div>

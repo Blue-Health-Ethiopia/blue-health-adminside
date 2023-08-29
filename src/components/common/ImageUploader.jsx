@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import upload from '../../assets/Icons/Upload.png'
 import { ExchangeIcon, UploadIcon } from '../../assets/Icons/Icons';
 
-const ImageUploader = () => {
+const ImageUploader = ({onImageUpload}) => {
     const [selectedImage, setSelectedImage] = useState(null);
     const [imageName, setImageName] = useState('');
 
@@ -12,6 +12,7 @@ const ImageUploader = () => {
       const reader = new FileReader();
       reader.onload = (e) => {
         setSelectedImage(e.target.result);
+        onImageUpload(e.target.result)
       };
         reader.readAsDataURL(file);
         setImageName(file.name);

@@ -1,9 +1,10 @@
 import React from 'react';
 
-function Button({ placeholder, icon, activeRoute, isExpanded }) {
+function Button({ placeholder, icon, activeRoute, isExpanded, onClick }) {
   return (
-    <div>
+    
       <button
+        onClick={onClick}
         className={` p-3 text-end hover:bg-primaryLight ${
           activeRoute ? 'bg-primaryMedium' : 'bg-primaryDark'
         } duration-150 rounded-lg p-3 text-white font-extralight capitalize tracking-[0.3rem] text-xs w-full`}
@@ -20,13 +21,12 @@ function Button({ placeholder, icon, activeRoute, isExpanded }) {
           <div>{placeholder}</div>
         </div>
       </button>
-    </div>
   );
 }
-export const EditButton = ({ icon, placeholder }) => {
+export const EditButton = ({ icon, placeholder,onClick }) => {
   return (
-    <div>
-      <button
+    <button
+      onClick={onClick}
         className={`text-end hover:bg-primaryLight bg-primary duration-150 rounded-lg p-4 text-white font-light capitalize tracking-[0.3rem] text-xs w-40`}
       >
         <div
@@ -37,7 +37,6 @@ export const EditButton = ({ icon, placeholder }) => {
           {placeholder.toUpperCase()}
         </div>
       </button>
-    </div>
   );
 };
 export const CopyButton = ({ icon, placeholder }) => {

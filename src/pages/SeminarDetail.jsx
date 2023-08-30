@@ -13,7 +13,7 @@ const SeminarDetail = () => {
     
   return (
     <>
-      <div className="flex">
+      <div className="flex mb-6">
         <div className="flex-1 ml-3 mt-20 space-y-5">
           <LinkNav />
           <SeminarInformations seminar={selectedSeminar} />

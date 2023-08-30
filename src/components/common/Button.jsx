@@ -27,7 +27,7 @@ export const EditButton = ({ icon, placeholder,onClick }) => {
   return (
     <button
       onClick={onClick}
-        className={`text-end hover:bg-primaryLight bg-primary duration-150 rounded-lg p-4 text-white font-light capitalize tracking-[0.3rem] text-xs w-40`}
+        className={`text-end hover:bg-primaryLight bg-primary duration-150 rounded-lg p-3 text-white font-light capitalize tracking-[0.1rem] text-xs w-fit`}
       >
         <div
           className={`flex items-center justify-center w-full gap-6
@@ -43,7 +43,7 @@ export const CopyButton = ({ icon, placeholder }) => {
   return (
     <div>
       <button
-        className={`z-50 text-end hover:bg-primaryLight hover:text-white bg-transparent border border-primary  duration-150 rounded-lg p-1 text-primary font-light capitalize tracking-[0.3rem] text-xs w-full`}
+        className={`z-50 text-end hover:bg-primaryLight hover:text-white bg-transparent border border-primary  duration-150 rounded-lg p-1 text-primary font-light capitalize tracking-[0.1rem] text-xs w-full`}
       >
         <div
           className={`flex items-center h-full w-full gap-2

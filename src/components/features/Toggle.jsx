@@ -16,11 +16,13 @@ const Toggle = () => {
       >
         <div
           className={`w-4 h-4 transform transition rounded-full ${
-            isChecked ? 'translate-x-5' : ''
+            isChecked ? 'translate-x-5' : 'translate-x-1'
           } ${isChecked ? 'bg-primary' : 'bg-primaryMedium'}`}
         />
       </div>
-      <span className="text-primary text-xs capitalize font-bold">{isChecked ? 'ACTIVE' : 'INACTIVE'}</span>
+      <span className="text-primary text-xs capitalize font-bold">
+        {isChecked ? 'ACTIVE' : 'INACTIVE'}
+      </span>
       <input
         type="checkbox"
         className="sr-only"

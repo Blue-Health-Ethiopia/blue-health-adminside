@@ -5,11 +5,13 @@ import {
   MdUpload,
   MdCancel,
   MdDoneAll,
+  MdAttachEmail,
 } from 'react-icons/md';
 import {
   RiComputerFill,
   RiRadioButtonLine,
   RiEditBoxFill,
+  RiUserSearchLine,
 } from 'react-icons/ri';
 import { IoLogOut } from 'react-icons/io5';
 import { BsPeopleFill, BsFillFilePersonFill } from 'react-icons/bs';
@@ -31,4 +33,6 @@ export const CancelIcon = MdCancel;
 export const RightArrowIcon = TbArrowBigRightLineFilled;
 export const ExchangeIcon = TbArrowsExchange2;
 export const CorrectIcon = MdDoneAll;
+export const SearchIcon = RiUserSearchLine;
+export const EmailIcon = MdAttachEmail;
 

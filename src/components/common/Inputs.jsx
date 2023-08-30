@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { CorrectIcon, EditIcon } from '../../assets/Icons/Icons';
-import { MdSave } from 'react-icons/md';
+import { CorrectIcon, EditIcon, SearchIcon } from '../../assets/Icons/Icons';
 
 export const TextInput = ({placeholder,icon,onChange}) => {
   return (
@@ -103,42 +102,42 @@ export const CEUInput = ({ placeholder, icon,onChange }) => {
 
 
 export const EditableInput = ({
-  placeholder,
   icon,
-  isEditing = true,
-  text,
+  isEditing,
+  initialText,
   toggleEdit,
+  onChange
 }) => {
   return isEditing ? (
     <div
-      className={`flex items-center justify-between gap-2 w-2/3 p-1 h-full px-3 rounded-md font-light  ${
+      className={`flex capitalize items-center justify-between gap-2 w-2/3 p-1 h-full px-3 rounded-md font-light  ${
         isEditing ? '  border-b border-accent' : 'ring-0 '
       }`}
     >
       <div
         className={`${
-          isEditing ? 'text-accent animate-pulse' : 'text-primaryMedium'
+          isEditing ? 'text-accent animate-pulse' : 'text-primary'
         }`}
       >
         {icon}
       </div>
       {isEditing ? (
         <input
-          className="outline-none bg-transparent tracking-wider py-1 ml-2 w-full"
+          className="outline-none capitalize bg-transparent tracking-wider py-1 ml-2 w-full"
           type="text"
-          value={text}
-          onChange={null}
+          value={initialText}
+          onChange={onChange}
         />
       ) : (
-        <span>{text}</span>
+        <span>{initialText}</span>
       )}{' '}
       <button onClick={toggleEdit}>
-        <MdSave className="text-accent" />
+        <CorrectIcon className="text-accent" />
       </button>
     </div>
   ) : (
     <div
-      className={`flex items-center justify-between font-bold text-primary tracking-widest gap-2 w-2/3 p-1 h-full px-3 rounded-md  ${
+      className={`flex capitalize items-center justify-between font-bold text-primary tracking-widest gap-2 w-2/3 p-1 h-full px-3 rounded-md  ${
         isEditing ? 'border-b border-accent' : 'ring-0 '
       }`}
     >
@@ -149,11 +148,25 @@ export const EditableInput = ({
         } flex items-center gap-3`}
       >
         {icon}
-        <span>{text}</span>
+        <span className='text-primary'>{initialText}</span>
       </div>
       <button onClick={toggleEdit}>
         <EditIcon className="text-primaryMedium" />
       </button>
+    </div>
+  );
+};
+
+export const SearchInput = ({ onChange }) => {
+  return (
+    <div className="flex items-center bg-background rounded-md p-3">
+      <input
+        type="text"
+        placeholder="Search..."
+        className="flex-grow bg-transparent outline-none px-2"
+        onChange={onChange}
+      />
+      <SearchIcon className="text-lg text-primary" />
     </div>
   );
 };

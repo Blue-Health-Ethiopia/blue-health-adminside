@@ -1,24 +1,32 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import SeminarPresenter from '../container/Details/SeminarPresenter';
 import SeminarInformations from '../container/Details/SeminarInformations';
 import LinkNav from '../components/features/LinkNav';
+import { EditButton } from '../components/common/Button';
+import { QuizIcon } from '../assets/Icons/Icons';
 
 const SeminarDetail = () => {
-  const {seminarID}=useParams()
+  const { seminarID } = useParams()
+  const navigate=useNavigate()
   const seminars=useSelector(state=>state.seminars.seminars)
   
-  const selectedSeminar=seminars.find((seminar)=>seminar.id===parseInt(seminarID))
+  const selectedSeminar = seminars.find((seminar) => seminar.id === parseInt(seminarID))
+  
+  const handleQuizNavigation = () => {
+    navigate('/quiz',{state:{selectedSeminar:selectedSeminar}})
+  }
     
   return (
     <>
+      <EditButton onClick={()=>handleQuizNavigation()} icon={<QuizIcon className='text-lg'/>} className='ml-3' placeholder={'Add a quiz'}/>
       <div className="flex mb-6">
-        <div className="flex-1 ml-3 mt-20 space-y-5">
+        <div className="flex-1 ml-3 mt-14 space-y-5">
           <LinkNav />
           <SeminarInformations seminar={selectedSeminar} />
         </div>
-        <div className="flex-1 mt-5">
+        <div className="flex-1 mt-0">
           <SeminarPresenter seminar={selectedSeminar} />
         </div>
       </div>

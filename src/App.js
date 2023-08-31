@@ -7,6 +7,7 @@ import VirtualSeminar from './pages/VirtualSeminar';
 import CreateSeminar from './pages/CreateSeminar';
 import SeminarDetail from './pages/SeminarDetail';
 import Peoples from './pages/Peoples';
+import Quiz from './pages/Quiz';
 
 function App() {
   const location = useLocation();
@@ -22,6 +23,7 @@ function App() {
           <Route path="/virtualseminar/create" element={<CreateSeminar />} />
           <Route path="/virtualseminar/:seminarID" element={<SeminarDetail />} />
           <Route path="/participants" element={<Peoples />} />
+          <Route path="/quiz" element={<Quiz />} />
         </Routes>
       </div>
     </>

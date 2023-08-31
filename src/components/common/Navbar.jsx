@@ -29,6 +29,8 @@ const Navbar = ({ activeRoute, isExpanded }) => {
                 ? 'VIRTUAL SEMINARIES'
                 : activeRoute === `/virtualseminar/create`
                 ? 'CREATE VIRTUAL SEMINAR'
+                : activeRoute === `/quiz`
+                ? 'QUIZ'
                 : ''}
             </h1>
             <div className="flex items-center justify-center text-end gap-3">

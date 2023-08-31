@@ -1,11 +1,15 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import { virtualseminars } from "../data/virtualseminars";
+import { quiz } from "../data/quiz";
 
 const initialState = {
     isExpanded:true,
 }
 const seminarsInitialState = {
-    seminars:virtualseminars
+  seminars: virtualseminars,
+};
+const quizsInitialState = {
+  quizs:quiz
 }
 const editInitialState = {
   title: false,
@@ -45,10 +49,13 @@ const seminarsReducer = (state = seminarsInitialState, action) => {
        return state;
    }
  };
-
+const quizReducer = (state = quizsInitialState, action) => {
+   return state
+ }
 const rootReducer = combineReducers({
     panel: sidePanelReducer,
     seminars: seminarsReducer,
-    editing:editingReducer
+    editing: editingReducer,
+    quiz: quizReducer
 })
 export default rootReducer

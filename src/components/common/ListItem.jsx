@@ -22,7 +22,7 @@ const ListItem = ({ title, activaState, people, date, image,id }) => {
               <PeopleIcon className="text-accent text-lg" />
               <h1 className="font-bold text-xs text-primary tracking-widest">{activaState==='Active'?people:'--'}</h1>
             </span>
-            <h1 className="font-bold pt-2 text-sm text-primaryMedium tracking-widest">
+            <h1 className="font-light pt-2 text-sm text-primaryMedium tracking-widest">
               {date}
             </h1>
           </div>

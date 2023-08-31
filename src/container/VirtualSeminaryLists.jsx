@@ -6,7 +6,7 @@ const VirtualSeminaryLists = () => {
   const seminars=useSelector(state=>state.seminars.seminars)
 
   return (
-    <div className="overflow-y-scroll space-y-7 h-[40rem] py-8 scrollbar-thin scrollbar-track-backgroundDim scrollbar-thumb-primary ">
+    <div className="overflow-y-scroll space-y-2 h-[40rem] py-8 scrollbar-thin scrollbar-track-backgroundDim scrollbar-thumb-primary ">
       {seminars.map((seminar) => (
           <ListItem
           key={seminar.id}

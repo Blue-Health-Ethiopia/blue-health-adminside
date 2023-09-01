@@ -68,7 +68,7 @@ const CreateSeminar = () => {
       name: seminar.name,
       occupations: seminar.occupations,
       activeState: seminar.activeState,
-      people: seminar.people,
+      people: 10,
       ceu: seminar.ceu,
       link: seminar.link,
       image: uploadedImage,

@@ -4,10 +4,12 @@ import { EditButton } from '../components/common/Button'
 import { SaveIcon } from '../assets/Icons/Icons'
 import QuizContainer from '../container/Quiz/QuizContainer'
 import QuestionAdder from '../container/Quiz/QuestionAdder'
+import { useSelector } from 'react-redux'
 
 const Quiz = () => {
     const location = useLocation()
     const seminar = location.state?.selectedSeminar || {}
+    const quiz = useSelector((state) => state.quiz.quizs);
 
   return (
     <div className="bg-white flex flex-col gap-4 mb-8 rounded-md w-full mt-3 p-3 h-full">
@@ -27,7 +29,10 @@ const Quiz = () => {
       <div className="w-full h-[2px] bg-backgroundDim" />
       <div className='flex w-full justify-between'>
         <QuizContainer />
-        <QuestionAdder />
+        {
+          quiz.length===5?null:
+          <QuestionAdder />
+        }
       </div>
     </div>
   );

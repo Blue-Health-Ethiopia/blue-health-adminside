@@ -1,16 +1,11 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import { virtualseminars } from "../data/virtualseminars";
-import { quiz } from "../data/quiz";
+import { quizReducer } from "./reducers/quizReducer";
+import { seminarsReducer } from "./reducers/seminarReducer";
 
 const initialState = {
     isExpanded:true,
 }
-const seminarsInitialState = {
-  seminars: virtualseminars,
-};
-const quizsInitialState = {
-  quizs:quiz
-}
+
 const editInitialState = {
   title: false,
   name: false,
@@ -26,17 +21,7 @@ const sidePanelReducer = (state=initialState, action) => {
     }
 
 }
-const seminarsReducer = (state = seminarsInitialState, action) => {
-    switch (action.type) {
-        case 'CREATE_SEMINAR':
-            return {
-              seminars: [...state.seminars, action.payload],
-            };
-      default:
-         return state;
-    }
-   
-}
+
  const editingReducer = (state = editInitialState, action) => {
    switch (action.type) {
      case 'TOGGLE_EDITING':
@@ -49,9 +34,7 @@ const seminarsReducer = (state = seminarsInitialState, action) => {
        return state;
    }
  };
-const quizReducer = (state = quizsInitialState, action) => {
-   return state
- }
+
 const rootReducer = combineReducers({
     panel: sidePanelReducer,
     seminars: seminarsReducer,

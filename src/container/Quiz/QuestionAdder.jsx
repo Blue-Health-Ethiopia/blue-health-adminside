@@ -1,32 +1,69 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { EditButton } from '../../components/common/Button';
 import { ChoiceIcon, DeleteIcon, QuestionIcon } from '../../assets/Icons/Icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { addChoices, addQuestion, addQuiz, removeChoice, resetInputs, selectChoice, updateChoice } from '../../redux/actions';
 
 const QuestionAdder = () => {
-  const [question, setQuestion] = useState('');
-  const [choices, setChoices] = useState([]); // Initial state with two empty choices
+  const choice = useSelector((state) => state.quiz.choices)
+  const question = useSelector((state) => state.quiz.question)
+  const answer = useSelector((state) => state.quiz.correctAnswer);
+  const dispatch = useDispatch() 
+  
+  const additionalQuizs = [
+    {
+      question: question,
+      choices: choice,
+      correctAnswer: answer,
+    },
+  ];
 
   const handleChoiceChange = (index, choice) => {
-    const updatedChoices = [...choices];
-    updatedChoices[index] = choice;
-    setChoices(updatedChoices);
+    dispatch(updateChoice(index, choice));
   };
 
     const addChoice = () => {
-    if(choices.length<6)
-    {setChoices([...choices, '']);}
+    if(choice.length<6)
+    {dispatch(addChoices())}
     };
     
+  const handleQuestion = (e) => {
+      dispatch(addQuestion(e.target.value))
+    }
+    
     const removeOrder = (index) => {
-      if (choices.length === 0) {
-        alert('You must have at least one order.');
-        return;
-      } else {
-        const newOrders = [...choices];
-        newOrders.splice(index, 1);
-        setChoices(newOrders);
-      }
-    };
+     dispatch(removeChoice(index))
+  };
+  
+  const handleChoiceSelection = (choice) => {
+    dispatch(selectChoice(choice))
+  }
+
+const addAllQuiz = () => {
+
+  if (!question.trim()) {
+    alert('Please enter a valid question');
+    return;
+  }
+
+  if (choice.length < 2) {
+    alert('Please enter at least two choices');
+    return;
+  }
+
+  if (choice.some((c) => !c.trim())) {
+    alert('Please enter valid choices for all options');
+    return;
+  }
+
+  if (answer !== '') {
+    dispatch(addQuiz(additionalQuizs));
+    dispatch(resetInputs());
+  } else {
+    alert('Select a choice');
+  }
+};
+
 
   return (
     <div className="bg-background w-1/2 p-6 rounded-md">
@@ -35,19 +72,25 @@ const QuestionAdder = () => {
           Add a Question
         </h2>
         <textarea
-          rows={4}
+          rows={7}
           className="w-full p-2 text-sm rounded-md outline-none border border-backgroundDim"
           placeholder="Enter your question here..."
           value={question}
-          onChange={(e) => setQuestion(e.target.value)}
+          onChange={(e) => handleQuestion(e)}
         />
       </div>
       <div>
-        <h2 className="text-base tracking-wide font-semibold mb-2">
-          Add Choices
-        </h2>
-        {choices.map((choice, index) => (
+        <h2 className="text-base tracking-wide font-semibold">Add Choices</h2>
+        <p className="text-sm mb-2 text-primary">Tick the correct answer</p>
+        {answer}
+        {choice.map((choice, index) => (
           <div className="w-full bg-white flex items-center gap-3 text-sm p-3 rounded-md mb-2 outline-none border border-backgroundDim">
+            <input
+              type="radio"
+              style={{ accentColor: '#004579' }}
+              name="choices"
+              onClick={()=>handleChoiceSelection(choice)}
+            />
             <input
               key={index}
               type="text"
@@ -56,7 +99,9 @@ const QuestionAdder = () => {
               value={choice}
               onChange={(e) => handleChoiceChange(index, e.target.value)}
             />
-            <button onClick={()=>removeOrder(index)}><DeleteIcon className='text-base text-primary hover:text-primaryMedium duration-200'/></button>
+            <button onClick={() => removeOrder(index)}>
+              <DeleteIcon className="text-base text-primary hover:text-primaryMedium duration-200" />
+            </button>
           </div>
         ))}
       </div>
@@ -68,7 +113,7 @@ const QuestionAdder = () => {
         />
         <EditButton
           icon={<QuestionIcon />}
-          onClick={null}
+          onClick={() => addAllQuiz()}
           placeholder={'Add question'}
         />
       </div>

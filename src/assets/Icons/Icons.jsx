@@ -18,6 +18,7 @@ import {
   RiDeleteBack2Fill,
 } from 'react-icons/ri';
 import { IoLogOut } from 'react-icons/io5';
+import { FaTrash } from 'react-icons/fa';
 import { BsPeopleFill, BsFillFilePersonFill } from 'react-icons/bs';
 import { RxLink1 } from 'react-icons/rx';
 import { TbArrowBigRightLineFilled, TbArrowsExchange2 } from 'react-icons/tb';
@@ -45,4 +46,5 @@ export const SaveIcon = MdSave;
 export const ChoiceIcon = GiChoice;
 export const QuestionIcon = MdQuestionMark;
 export const DeleteIcon = RiDeleteBack2Fill;
+export const TrashIcon = FaTrash;
 

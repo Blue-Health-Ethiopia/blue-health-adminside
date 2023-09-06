@@ -70,18 +70,43 @@ export const quizReducer = (state = quizsInitialState, action) => {
       return {
         ...state,
         isEditing: false,
-        selectedQuestionIndex: null,
       };
     case 'EDIT_QUIZ':
       const { indexQ, newQuestion } = action.payload;
-      const updatedQuizze = [...state.quizs];
-        updatedQuizze[indexQ] = {
-          ...updatedQuizze[indexQ],
-          question: newQuestion,
-        };
+      const updatedQuestion = [...state.quizs];
+      updatedQuestion[indexQ] = {
+        ...updatedQuestion[indexQ],
+        question: newQuestion,
+      };
       return {
         ...state,
-        quizs: updatedQuizze,
+        quizs: updatedQuestion,
+      };
+    case 'EDIT_CHOICE':
+      const { indexQu, indexC, newChoice } = action.payload;
+      const updatedChoice = [...state.quizs];
+      updatedChoice[indexQu] = {
+        ...updatedChoice[indexQu],
+        choices: updatedChoice[indexQu].choices.map((choice, index) =>
+          index === indexC ? newChoice : choice
+        ),
+      };
+      return {
+        ...state,
+        quizs: updatedChoice,
+      };
+
+    case 'EDIT_CORRECT_ANSWER':
+      const { questionIndex, newCorrectAnswer } = action.payload;
+      const updatedQuizs = [...state.quizs];
+      updatedQuizs[questionIndex] = {
+        ...updatedQuizs[questionIndex], // Copy the existing question object
+        correctAnswer: newCorrectAnswer,
+      };
+
+      return {
+        ...state,
+        quizs: updatedQuizs,
       };
 
     default:

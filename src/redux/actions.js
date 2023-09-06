@@ -56,7 +56,18 @@ export const enableEditing = (index) => ({
 export const saveEditing = () => ({
   type: 'SAVE_EDIT',
 });
-export const editing = (indexQ, newQuestion) => ({
+
+export const editngQuestion = (indexQ, newQuestion) => ({
   type: 'EDIT_QUIZ',
-  payload: { indexQ, newQuestion }, // Consistent payload structure
+  payload: { indexQ, newQuestion },
+});
+
+export const editngChoice = (indexQu,indexC, newChoice) => ({
+  type: 'EDIT_CHOICE',
+  payload: { indexQu,indexC, newChoice },
+});
+
+export const editCorrectAnswer = (questionIndex, newCorrectAnswer) => ({
+  type: 'EDIT_CORRECT_ANSWER',
+  payload: { questionIndex, newCorrectAnswer },
 });

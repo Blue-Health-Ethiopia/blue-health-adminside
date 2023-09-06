@@ -1,7 +1,8 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import QA from '../../assets/QandA.png'
-import { editing, enableEditing, removeQuiz, saveEditing } from '../../redux/actions';
+import { editCorrectAnswer, editngChoice, editngQuestion, enableEditing, removeQuiz, saveEditing } from '../../redux/actions';
+import { CorrectIcon, EditIcon, TrashIcon } from '../../assets/Icons/Icons';
 
 const QuizContainer = () => {
   const quizs = useSelector((state) => state.quiz.quizs);
@@ -12,19 +13,25 @@ const QuizContainer = () => {
   const getChoiceLetter = (choiceIndex) => {
     return String.fromCharCode(65 + choiceIndex); // 65 is the ASCII code for 'A'
   };
-
   const handleDeleteQuiz = (index) => {
     dispatch(removeQuiz(index));
   }
   const handleEnableEditQuestion = (index) => {
     dispatch(enableEditing(index));
   }
-  const handleSaveQuestion = (index) => {
+  const handleSaveQuestion = (index,) => {
     dispatch(saveEditing())
   }
-const handleEditQuestion = (indexQ, newQuestion) => {
-  dispatch(editing(indexQ, newQuestion));
-};
+  const handleEditQuestion = (indexQ, newQuestion) => {
+  dispatch(editngQuestion(indexQ, newQuestion));
+  };
+  const handleEditChoice = (indexQ,indexC, newChoice) => {
+  dispatch(editngChoice(indexQ,indexC, newChoice));
+  };
+  
+  const handleEditCorrectAnswer = (questionIndex, newCorrectAnswer) => {
+     dispatch(editCorrectAnswer(questionIndex, newCorrectAnswer));
+   };
 
   return (
     <div
@@ -35,10 +42,10 @@ const handleEditQuestion = (indexQ, newQuestion) => {
       } flex-col`}
     >
       {quizs.length === 0 ? (
-        <div className="flex flex-col items-center gap-1 -mt-12">
+        <div className="flex flex-col items-center gap-3 -mt-12">
           <img className="w-28 opacity-50" src={QA} alt="" />{' '}
-          <h1 className="capitalize font-semibold text-primary tracking-widest">
-            No questions added!!!
+          <h1 className="capitalize font-semibold text-primary tracking-wide">
+            No questions were added !
           </h1>
         </div>
       ) : (
@@ -46,50 +53,94 @@ const handleEditQuestion = (indexQ, newQuestion) => {
           <>
             <div className="flex gap-4 items-center">
               <p className="text-xs">{index + 1}</p>|
-              <div className="flex items-center w-full gap-8">
-                <h1 className="text-sm font-bold tracking-wider capitalize">
+              <div className="flex items-center w-full gap-8 justify-between">
+                <h1 className="text-sm font-bold w-96 tracking-wider capitalize">
                   {isEditing && selectedIndex === index ? (
-                    <input
-                      type="text"
-                      className="outline-none tracking-wider capitalize border-b w-fit border-primaryMedium"
-                      value={quiz.question}
-                      onChange={(e) =>
-                        handleEditQuestion(index, e.target.value)
-                      }
-                    />
+                    <>
+                      {quiz.image!=null&&
+                        <img
+                        className="w-56 h-32 object-contain my-2"
+                        src={quiz.image}
+                        alt=""
+                      />}
+                      <input
+                        type="text"
+                        className="outline-none tracking-wider w-96 capitalize border-b border-primaryMedium"
+                        value={quiz.question}
+                        onChange={(e) =>
+                          handleEditQuestion(index, e.target.value)
+                        }
+                      />
+                    </>
                   ) : (
-                    quiz.question
+                    <>
+                      { quiz.image!=null&&
+                        <img
+                        className="w-56 h-32 object-contain my-1"
+                        src={quiz.image}
+                        alt=""
+                      />}
+                      <h1 className="w-96"> {quiz.question}</h1>
+                    </>
                   )}
                 </h1>
-                <button
-                  onClick={() => handleDeleteQuiz(index)}
-                  className="text-xs cursor-pointer text-red-500 hover:text-red-700 duration-200"
-                >
-                  Delete
-                </button>
-                <button
-                  onClick={() => {
-                    isEditing
-                      ? handleSaveQuestion(index)
-                      : handleEnableEditQuestion(index);
-                  }}
-                  className="text-xs cursor-pointer text-blue-500 hover:text-blue-700 duration-200"
-                >
-                  {isEditing ? 'Save' : 'Edit'}
-                </button>
+                <div className="space-x-4 pr-4">
+                  <button
+                    onClick={() => handleDeleteQuiz(index)}
+                    className="text-xs cursor-pointer text-red-500 hover:text-red-700 duration-200"
+                  >
+                    <TrashIcon />
+                  </button>
+                  <button
+                    onClick={() => {
+                      isEditing
+                        ? handleSaveQuestion(index)
+                        : handleEnableEditQuestion(index);
+                    }}
+                    className="text-xs cursor-pointer text-blue-500 hover:text-blue-700 duration-200"
+                  >
+                    {isEditing ? <CorrectIcon /> : <EditIcon />}
+                  </button>
+                </div>
               </div>
             </div>
             {quiz.choices.map((choice, choiceIndex) => (
               <>
-                <div className="text-sm ml-12 track capitalize flex items-center gap-2">
-                  <span className="text-xs">
-                    {getChoiceLetter(choiceIndex)}.
-                  </span>
-                  {choice}
-                  <span className="text-primary text-xs font-bold">
-                    {quiz.correctAnswer === choice && '(Correct answer)'}
-                  </span>
-                </div>
+                {isEditing && selectedIndex === index ? (
+                  <div className="text-sm ml-12 track capitalize flex items-center gap-2">
+                    <input
+                      type="radio"
+                      style={{ accentColor: '#004579' }}
+                      name="choice"
+                      checked={quiz.correctAnswer === choice}
+                      onClick={() => {
+                        handleEditCorrectAnswer(index, choice);
+                      }}
+                    />
+                    <span className="text-xs">
+                      {getChoiceLetter(choiceIndex)}.
+                    </span>
+                    <input
+                      type="text"
+                      className="outline-none tracking-wider capitalize border-b w-fit border-primaryMedium"
+                      value={quiz.choices[choiceIndex]}
+                      name="choice"
+                      onChange={(e) =>
+                        handleEditChoice(index, choiceIndex, e.target.value)
+                      }
+                    />
+                  </div>
+                ) : (
+                  <div className="text-sm ml-12 track capitalize flex items-center gap-2">
+                    <span className="text-xs">
+                      {getChoiceLetter(choiceIndex)}.
+                    </span>
+                    {choice}
+                    <span className="text-primary text-xs font-bold">
+                      {quiz.correctAnswer === choice && '(Correct answer)'}
+                    </span>
+                  </div>
+                )}
               </>
             ))}
           </>

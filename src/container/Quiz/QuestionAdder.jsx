@@ -3,11 +3,14 @@ import { EditButton } from '../../components/common/Button';
 import { ChoiceIcon, DeleteIcon, QuestionIcon } from '../../assets/Icons/Icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { addChoices, addQuestion, addQuiz, removeChoice, resetInputs, selectChoice, updateChoice } from '../../redux/actions';
+import QuizImage from './QuizImage';
+import { resetImage } from '../../redux/actions/imageActions';
 
 const QuestionAdder = () => {
   const choice = useSelector((state) => state.quiz.choices)
   const question = useSelector((state) => state.quiz.question)
   const answer = useSelector((state) => state.quiz.correctAnswer);
+  const selectedImage = useSelector((state) => state.image.selectedQuizImage);
   const dispatch = useDispatch() 
   
   const additionalQuizs = [
@@ -15,6 +18,7 @@ const QuestionAdder = () => {
       question: question,
       choices: choice,
       correctAnswer: answer,
+      image: selectedImage,
     },
   ];
 
@@ -23,7 +27,7 @@ const QuestionAdder = () => {
   };
 
     const addChoice = () => {
-    if(choice.length<6)
+    if(choice.length<5)
     {dispatch(addChoices())}
     };
     
@@ -40,14 +44,13 @@ const QuestionAdder = () => {
   }
 
 const addAllQuiz = () => {
-
   if (!question.trim()) {
     alert('Please enter a valid question');
     return;
   }
 
-  if (choice.length < 2) {
-    alert('Please enter at least two choices');
+  if (choice.length < 4) {
+    alert('Please enter at least 4 choices');
     return;
   }
 
@@ -59,6 +62,7 @@ const addAllQuiz = () => {
   if (answer !== '') {
     dispatch(addQuiz(additionalQuizs));
     dispatch(resetInputs());
+    dispatch(resetImage());
   } else {
     alert('Select a choice');
   }
@@ -68,6 +72,7 @@ const addAllQuiz = () => {
   return (
     <div className="bg-background w-1/2 p-6 rounded-md">
       <div className="mb-6">
+        <QuizImage/>
         <h2 className="text-base tracking-wide font-semibold mb-2">
           Add a Question
         </h2>
@@ -80,9 +85,9 @@ const addAllQuiz = () => {
         />
       </div>
       <div>
+        {answer}
         <h2 className="text-base tracking-wide font-semibold">Add Choices</h2>
         <p className="text-sm mb-2 text-primary">Tick the correct answer</p>
-        {answer}
         {choice.map((choice, index) => (
           <div className="w-full bg-white flex items-center gap-3 text-sm p-3 rounded-md mb-2 outline-none border border-backgroundDim">
             <input

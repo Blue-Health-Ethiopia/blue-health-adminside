@@ -1,6 +1,7 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import { quizReducer } from "./reducers/quizReducer";
 import { seminarsReducer } from "./reducers/seminarReducer";
+import { Imagereducer } from "./reducers/imageReducer";
 
 const initialState = {
     isExpanded:true,
@@ -39,6 +40,7 @@ const rootReducer = combineReducers({
     panel: sidePanelReducer,
     seminars: seminarsReducer,
     editing: editingReducer,
-    quiz: quizReducer
+    quiz: quizReducer,
+    image:Imagereducer
 })
 export default rootReducer

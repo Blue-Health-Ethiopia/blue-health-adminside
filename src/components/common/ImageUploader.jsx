@@ -1,18 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import upload from '../../assets/Icons/Upload.png'
 import { ExchangeIcon, UploadIcon } from '../../assets/Icons/Icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { setImageName, setSelectedImage } from '../../redux/actions/imageActions';
 
-const ImageUploader = ({onImageUpload}) => {
-    const [selectedImage, setSelectedImage] = useState(null);
-    const [imageName, setImageName] = useState('');
+const ImageUploader = () => {
+   const dispatch = useDispatch();
+   const selectedImage = useSelector((state) => state.image.selectedImage);
+   const imageName = useSelector((state) => state.image.imageName);
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        setSelectedImage(e.target.result);
-        onImageUpload(e.target.result)
+        dispatch(setSelectedImage(e.target.result));
+        dispatch(setImageName(file.name));
       };
         reader.readAsDataURL(file);
         setImageName(file.name);

@@ -21,3 +21,6 @@ export const setQuizImageName = (name) => ({
 export const resetImage = () => ({
   type: 'RESET_IMAGE',
 });
+export const resetSelectedImage = () => ({
+  type: 'RESET_SELECTED_IMAGE',
+});

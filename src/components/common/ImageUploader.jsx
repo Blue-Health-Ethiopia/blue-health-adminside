@@ -23,8 +23,8 @@ const ImageUploader = () => {
   };
 
     return (
-      <>
-        <div className="w-full mx-auto bg-backgroundDim rounded-md">
+      <div className="flex flex-col justify-start items-center w-full gap-3">
+        <div className="w-4/5 mx-auto bg-backgroundDim rounded-md">
           <div className="flex flex-col items-center ">
             <label htmlFor="imageUpload" className="cursor-pointer">
               {selectedImage ? (
@@ -34,8 +34,8 @@ const ImageUploader = () => {
                   className="w-full h-72 object-cover rounded-md"
                 />
               ) : (
-                <div className="w-32 h-72 flex items-center justify-center border-gray-300 rounded-lg">
-                  <img className="w-12 opacity-50" src={upload} alt="" />
+                <div className="w-4/5 h-72 flex items-center justify-center border-gray-300 rounded-lg">
+                  <img className="w-full opacity-50" src={upload} alt="" />
                 </div>
               )}
             </label>
@@ -48,7 +48,9 @@ const ImageUploader = () => {
             />
           </div>
         </div>
-        <h1 className='text-primary flex text-sm font-bold capitalize w-fit tracking-wider text-center'>{imageName}</h1>
+        <h1 className="text-primary flex text-sm font-bold capitalize w-fit tracking-wider text-center">
+          {imageName}
+        </h1>
         <label
           htmlFor="imageUpload"
           className="cursor-pointer text-sm text-primary border border-primary rounded-md p-2 hover:bg-primary hover:text-white duration-200 tracking-wider"
@@ -65,7 +67,7 @@ const ImageUploader = () => {
             </span>
           )}
         </label>
-      </>
+      </div>
     );
 };
 

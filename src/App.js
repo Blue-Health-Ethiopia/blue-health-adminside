@@ -8,12 +8,14 @@ import CreateSeminar from './pages/CreateSeminar';
 import SeminarDetail from './pages/SeminarDetail';
 import Peoples from './pages/Peoples';
 import Quiz from './pages/Quiz';
+import Login from './pages/Login';
 
 function App() {
   const location = useLocation();
   const isExpanded = useSelector((state) => state.panel.isExpanded);
   return (
     <>
+      <Login/>
       <SidePanel />
       <Navbar isExpanded={isExpanded} activeRoute={location.pathname} />
       <div className={`absolute right-[5%] ${isExpanded?'left-[20%]':'left-[8%]'} top-[22%] duration-200`}>

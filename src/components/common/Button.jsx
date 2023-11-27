@@ -7,7 +7,7 @@ function Button({ placeholder, icon, activeRoute, isExpanded, onClick }) {
         onClick={onClick}
         className={` p-3 text-end hover:bg-primaryLight ${
           activeRoute ? 'bg-primaryMedium' : 'bg-primaryDark'
-        } duration-150 rounded-lg p-3 text-white font-extralight capitalize tracking-[0.3rem] text-xs w-full`}
+        } duration-150 rounded-lg p-3 text-white font-extralight capitalize tracking-[0.3rem] text-[11px] w-full`}
       >
         <div
           className={`flex items-center w-full ${

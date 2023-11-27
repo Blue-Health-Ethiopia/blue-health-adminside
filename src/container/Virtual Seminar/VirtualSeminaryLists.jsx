@@ -1,5 +1,5 @@
 import React from 'react';
-import ListItem from '../components/common/ListItem';
+import ListItem from '../../components/common/ListItem';
 import { useSelector } from 'react-redux';
 
 const VirtualSeminaryLists = () => {

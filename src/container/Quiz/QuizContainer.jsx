@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import QA from '../../assets/QandA.png'
-import { editCorrectAnswer, editngChoice, editngQuestion, enableEditing, removeQuiz, saveEditing } from '../../redux/actions';
+import { editCorrectAnswer, editngChoice, editngQuestion, enableEditing, removeQuiz, saveEditing } from '../../redux/actions/quizActions';
 import { CorrectIcon, EditIcon, TrashIcon } from '../../assets/Icons/Icons';
 
 const QuizContainer = () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import FullCard from '../components/features/FullCard';
-import VirtualSeminaryLists from '../container/VirtualSeminaryLists';
+import VirtualSeminaryLists from '../container/Virtual Seminar/VirtualSeminaryLists';
 
 const VirtualSeminar = () => {
  

@@ -36,6 +36,12 @@ export const Imagereducer = (state = initialState, action) => {
         selectedQuizImage: null,
         quizImageName: '',
       };
+    case 'RESET_SELECTED_IMAGE':
+      return {
+        ...state,
+        selectedImage: null,
+        imageName: '',
+      };
     default:
       return state;
   }

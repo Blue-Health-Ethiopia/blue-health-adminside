@@ -48,6 +48,7 @@ export function SeminarForm({
         placeholder={'Zoom Link'}
         icon={<LinkIcon />}
       />
+      
     </>
   );
 }

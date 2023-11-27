@@ -2,7 +2,7 @@ import React from 'react';
 import { EditButton } from '../../components/common/Button';
 import { ChoiceIcon, DeleteIcon, QuestionIcon } from '../../assets/Icons/Icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { addChoices, addQuestion, addQuiz, removeChoice, resetInputs, selectChoice, updateChoice } from '../../redux/actions';
+import { addChoices, addQuestion, addQuiz, removeChoice, resetInputs, selectChoice, updateChoice } from '../../redux/actions/quizActions';
 import QuizImage from './QuizImage';
 import { resetImage } from '../../redux/actions/imageActions';
 
